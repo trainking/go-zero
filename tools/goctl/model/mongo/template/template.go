@@ -55,7 +55,7 @@ func (m *default{{.Type}}Model) FindOne(ctx context.Context, id string) (*{{.Typ
 }
 
 func (m *default{{.Type}}Model) Update(ctx context.Context, data *{{.Type}}) error {
-	_, err := m.collection.UpdateByID(ctx, data.Id, data)
+	_, err := m.collection.UpdateByID(ctx, data.Id, bson.M{"$set": data})
 	return err
 }
 
